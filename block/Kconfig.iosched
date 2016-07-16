@@ -88,6 +88,10 @@ config IOSCHED_TRIPNDROID
  	---help---
 	  The Trip N Droid scheduler
 
+config IOSCHED_MAPLE
+	tristate "Maple I/O scheduler"
+	default y
+
 choice
 	prompt "Default I/O scheduler"
 	default DEFAULT_CFQ
@@ -124,6 +128,9 @@ choice
 	config DEFAULT_TRIPNDROID
 		bool "TRIPNDROID" if IOSCHED_TRIPNDROID=y
 
+	config DEFAULT_MAPLE
+		bool "Maple" if IOSCHED_MAPLE=y
+
 	config DEFAULT_NOOP
 		bool "No-op"
 
@@ -137,6 +144,8 @@ config DEFAULT_IOSCHED
 	default "bfq" if DEFAULT_BFQ
 	default "noop" if DEFAULT_NOOP
 	default "tripndroid" if DEFAULT_TRIPNDROID 
+	default "maple" if DEFAULT_MAPLE
+
 endmenu
 
 endif
